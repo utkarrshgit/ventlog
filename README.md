@@ -2,6 +2,9 @@
 
 A backend service for chat session logging with automated Natural Language Processing (NLP) tagging using the Google Gemini API.
 
+## Live URL
+The API is deployed and accessible at: `https://ventlog.onrender.com`.
+
 ## Features
 
 - **Authentication:** Secure user registration, login, and logout using Bcrypt and JWT stored in `httpOnly` cookies.
@@ -55,6 +58,7 @@ A backend service for chat session logging with automated Natural Language Proce
 ## API Documentation
 
 *Base URL: `http://localhost:5001/api`*
+*Base URL (Production): `https://ventlog.onrender.com/api`*
 
 ### Authentication (`/auth`)
 
@@ -89,6 +93,7 @@ A backend service for chat session logging with automated Natural Language Proce
 The application includes a background job located in `src/jobs/weeklySummary.js`.
 - **Schedule:** Runs every Sunday at 00:00 (Midnight) server time (`0 0 * * 0`).
 - **Function:** Scans all closed sessions from the past 7 days for each user, calculates the average mood score, extracts the top 5 most frequent tags, and saves a `WeeklySummary` document to the database.
+*Note: When deployed on the Render free tier, the server spins down after 15 minutes of inactivity. The Sunday midnight cron job will only execute if the server is awake.*
 
 ## Project Structure
 
