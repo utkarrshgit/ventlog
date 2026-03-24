@@ -1,4 +1,4 @@
-# Vibetrack
+# Ventlog
 
 A backend service for chat session logging with automated Natural Language Processing (NLP) tagging using the Google Gemini API.
 
@@ -31,8 +31,8 @@ A backend service for chat session logging with automated Natural Language Proce
 
 1. **Clone the repository:**
    ```bash
-   git clone https://github.com/utkarrshgit/vibetrack.git
-   cd vibetrack
+   git clone https://github.com/utkarrshgit/ventlog.git
+   cd ventlog
    ```
 2. **Install dependencies:**
    ```bash
@@ -93,7 +93,7 @@ The application includes a background job located in `src/jobs/weeklySummary.js`
 ## Project Structure
 
 ```text
-vibetrack/
+ventlog/
 ├── src/
 │   ├── config/
 │   │   └── db.js              # MongoDB connection

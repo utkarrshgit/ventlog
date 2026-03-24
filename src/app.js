@@ -23,7 +23,7 @@ app.use("/api/sessions", sessionRoutes);
 app.use("/api/analytics", analyticsRoutes);
 
 app.get("/", (req, res) => {
-  res.send("Vibetrack API Running...");
+  res.send("Ventlog API Running...");
 });
 
 module.exports = app;
