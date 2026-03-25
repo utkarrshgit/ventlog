@@ -3,10 +3,8 @@ const Session = require("../models/Session");
 const WeeklySummary = require("../models/WeeklySummary");
 const User = require("../models/User");
 
-// Runs every Sunday at midnight
-cron.schedule("0 0 * * 0", async () => {
+const generateWeeklySummary = async () => {
   console.log("Running weekly summary job...");
-
   const oneWeekAgo = new Date();
   oneWeekAgo.setDate(oneWeekAgo.getDate() - 7);
 
@@ -20,7 +18,6 @@ cron.schedule("0 0 * * 0", async () => {
 
   try {
     const users = await User.find();
-
     for (const user of users) {
       const sessions = await Session.find({
         userId: user._id,
@@ -53,7 +50,14 @@ cron.schedule("0 0 * * 0", async () => {
         dominantTags,
       });
     }
+    console.log("Weekly summaries generated successfully.");
   } catch (error) {
     console.error("Error generating weekly summaries:", error);
   }
-});
+};
+
+// scheduled job running normally
+cron.schedule("0 0 * * 0", generateWeeklySummary);
+
+// for manual triggering
+module.exports = { generateWeeklySummary };
